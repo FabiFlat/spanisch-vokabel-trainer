@@ -1,0 +1,10 @@
+{
+  "name": "Hola! Spanisch-Vokabeltrainer",
+  "short_name": "Hola!",
+  "description": "Spanisch-Vokabeln sammeln, anhören und üben.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f5f0",
+  "theme_color": "#f6f5f0",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

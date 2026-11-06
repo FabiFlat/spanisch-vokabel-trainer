@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <meta name="description" content="Dein persönlicher Spanisch-Vokabeltrainer – Wörter sammeln, anhören und üben.">
+  <title>Hola! — Spanisch lernen</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Hauptnavigation">
+      <a class="brand" href="#home" aria-label="Hola Startseite"><span class="brand-mark">¡</span><span>hola<span class="brand-dot">.</span></span></a>
+      <div class="side-label">MENÜ</div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span>Übersicht</button>
+        <button class="nav-item" data-view="vocabulary"><span class="nav-icon">▤</span>Meine Wörter <span class="nav-count" id="nav-count">0</span></button>
+        <button class="nav-item" data-view="practice"><span class="nav-icon">✳</span>Üben</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="streak-card"><span class="streak-icon">✦</span><div><strong>Schön, dass du da bist!</strong><p>Ein paar Minuten täglich machen den Unterschied.</p></div></div><div class="sidebar-foot">Deine Wörter bleiben auf diesem Gerät gespeichert.</div></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><button class="mobile-brand" data-view="home"><span class="brand-mark">¡</span> hola<span class="brand-dot">.</span></button><div class="topbar-right"><span class="language-pill"><span class="flag">🇪🇸</span> Spanisch <span class="chevron">⌄</span></span><button class="avatar" aria-label="Profil">✿</button></div></header>
+
+      <section id="view-home" class="view active-view">
+        <div class="welcome-row"><div><p class="eyebrow">¡HOLA!</p><h1>Ein kleines Wort,<br><span>ein großer Schritt.</span></h1><p class="intro">Dein Spanisch wartet schon auf dich. Was möchtest du heute lernen?</p></div><div class="hero-art" aria-hidden="true"><div class="sun"></div><span class="art-star star-one">✳</span><span class="art-star star-two">✦</span><div class="art-book"><i></i><i></i><i></i><b>ñ</b></div><div class="art-pot"></div></div></div>
+        <div class="stats-grid"><article class="stat-card"><span class="stat-icon coral">▤</span><div><span class="stat-label">Wörter gesammelt</span><strong id="stat-total">0</strong><small>in deiner Sammlung</small></div></article><article class="stat-card"><span class="stat-icon lilac">✳</span><div><span class="stat-label">Heute geübt</span><strong id="stat-practiced">0</strong><small>Wörter wiederholt</small></div></article><article class="stat-card"><span class="stat-icon mint">✓</span><div><span class="stat-label">Schon gewusst</span><strong id="stat-known">0</strong><small>insgesamt gemeistert</small></div></article></div>
+        <div class="section-heading"><div><p class="eyebrow">DEIN LERNBEREICH</p><h2>Womit legen wir los?</h2></div></div>
+        <div class="action-grid"><button class="action-card add-action" id="home-add"><span class="action-icon">＋</span><span><strong>Wörter hinzufügen</strong><small>Neue Vokabeln in deine Sammlung aufnehmen</small></span><span class="action-arrow">↗</span></button><button class="action-card practice-action" id="home-practice"><span class="action-icon">✳</span><span><strong>Jetzt üben</strong><small>Trainiere Übersetzung und Schreibweise</small></span><span class="action-arrow">↗</span></button></div>
+        <section class="recent-section"><div class="section-heading compact"><div><p class="eyebrow">DEINE SAMMLUNG</p><h2>Zuletzt hinzugefügt</h2></div><button class="text-button" data-view="vocabulary">Alle Wörter <span>→</span></button></div><div id="recent-list" class="recent-list"></div></section>
+      </section>
+
+      <section id="view-vocabulary" class="view">
+        <div class="page-heading"><div><p class="eyebrow">DEIN WORTSCHATZ</p><h1>Meine Wörter</h1><p class="intro">Sammle Wörter, die du im Alltag wirklich brauchst.</p></div><button id="open-add" class="primary-button">＋ <span>Wort hinzufügen</span></button></div>
+        <div class="toolbar"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Wörter durchsuchen…" aria-label="Wörter durchsuchen"></label><span id="word-count-label" class="result-count">0 Wörter</span></div>
+        <div id="vocab-list" class="vocab-list"></div>
+      </section>
+
+      <section id="view-practice" class="view">
+        <div class="page-heading"><div><p class="eyebrow">SCHRITT FÜR SCHRITT</p><h1>Übungszeit</h1><p class="intro">Wiederholen hilft deinem Gedächtnis, die Wörter zu behalten.</p></div></div>
+        <div id="practice-empty" class="empty-state hidden"><div class="empty-illustration">✳</div><h2>Deine Lernkarten warten</h2><p>Füge zuerst ein paar Vokabeln hinzu, dann kannst du direkt losüben.</p><button class="primary-button" id="practice-add">＋ Wort hinzufügen</button></div>
+        <div id="practice-panel" class="practice-layout"><div class="practice-top"><span class="practice-progress-label" id="practice-progress">BEREIT ZUM ÜBEN</span><button class="text-button" id="restart-practice">↻ Neu mischen</button></div><div class="practice-card"><div class="card-kicker" id="card-direction">ÜBERSETZE INS DEUTSCHE</div><div class="prompt-word" id="prompt-word">hola</div><button class="sound-button" id="speak-prompt" aria-label="Spanisches Wort anhören">◖)) <span>Wort anhören</span></button><form id="answer-form" class="answer-form"><label for="answer-input" id="answer-label">Deine Übersetzung</label><div class="answer-row"><input id="answer-input" autocomplete="off" placeholder="Antwort eingeben…"><button type="submit" class="primary-button">Prüfen <span>→</span></button></div></form><div id="answer-feedback" class="answer-feedback" aria-live="polite"></div><div class="card-footer"><span>💡 Tipp: Achte auch auf die Akzente.</span><button id="show-answer" class="text-button">Antwort zeigen</button></div></div><div class="practice-options"><span>Übungsrichtung</span><button class="direction-button selected" data-direction="es-de">🇪🇸 Spanisch <span>→</span> Deutsch</button><button class="direction-button" data-direction="de-es">🇩🇪 Deutsch <span>→</span> Spanisch</button><button class="direction-button" data-direction="spelling">✎ Schreibweise üben</button></div></div>
+      </section>
+
+      <footer class="footer"><span>Mit ♥ für deine Spanisch-Reise gemacht</span><span>¡Poco a poco!</span></footer>
+    </main>
+  </div>
+
+  <dialog id="add-dialog" class="modal"><form id="add-form" method="dialog"><div class="modal-header"><div><p class="eyebrow">NEUE VOKABEL</p><h2>Wort hinzufügen</h2></div><button type="button" class="close-button" id="close-dialog" aria-label="Schließen">×</button></div><label class="field-label" for="spanish-input">Spanisches Wort <span>*</span></label><input id="spanish-input" class="field-input" required maxlength="100" placeholder="z. B. mariposa"><label class="field-label" for="german-input">Deutsche Übersetzung <span>*</span></label><input id="german-input" class="field-input" required maxlength="160" placeholder="z. B. Schmetterling"><label class="field-label" for="example-input">Beispielsatz <small>(optional)</small></label><input id="example-input" class="field-input" maxlength="240" placeholder="La mariposa es bonita."><div class="modal-actions"><button type="button" class="secondary-button" id="cancel-dialog">Abbrechen</button><button type="submit" class="primary-button">Speichern <span>✓</span></button></div><div class="scan-divider"><span>ODER AUS EINEM FOTO LESEN</span></div><label for="scan-file" class="scan-button">▧ <span>Foto mit Vokabeln auswählen</span></label><input id="scan-file" type="file" accept="image/*" capture="environment" class="visually-hidden"><p class="scan-note">Tipp: Fotografiere eine Liste mit „spanisch – deutsch“ pro Zeile. Prüfe den erkannten Text vor dem Speichern.</p><div id="scan-status" class="scan-status" aria-live="polite"></div></form></dialog>
+
+  <dialog id="import-dialog" class="modal import-modal"><form id="import-form" method="dialog"><div class="modal-header"><div><p class="eyebrow">TEXT ERKENNEN</p><h2>Erkannte Vokabeln</h2></div><button type="button" class="close-button" id="close-import" aria-label="Schließen">×</button></div><p class="scan-note">Eine Vokabel pro Zeile. Spanisch und Deutsch bitte mit einem Bindestrich, Komma oder Tab trennen. Du kannst den Text hier korrigieren.</p><textarea id="import-text" class="import-text" rows="9" spellcheck="false"></textarea><div class="modal-actions"><button type="button" class="secondary-button" id="cancel-import">Abbrechen</button><button type="submit" class="primary-button">Vokabeln übernehmen <span>✓</span></button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
